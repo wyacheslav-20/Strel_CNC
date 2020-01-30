@@ -1,1 +1,1 @@
-# MyReprosit
+# MyReprosit Недавно начад изучать PYTHON и DJANGO это мой первый опыт работы на Вашем сайте.
