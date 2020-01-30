@@ -1,0 +1,23 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="Content-Type"
+content="text/html; charset=utf-8">
+<titlе>Добавление объявления - Доска объявлений</titlе>
+</head>
+<body>
+<hl>Добавление объявления</hl>
+<div>
+<а href="{% url 'index' %)">Главная</а>
+{% for ruЬric in ruЬrics %)
+<а href="{% url 'by_ruЬric' rubric.pk %)">
+{{ ruЬric.name ))</а>
+{% endfor %)
+</div>
+<foпn method="post">
+{% csrf_token %)
+{{ foпn.as_p ))
+<input type="suЬmit" vаluе="Добавить">
+</form>
+</body>
+</html>

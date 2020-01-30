@@ -1,0 +1,26 @@
+﻿<!DОСТУРЕ html>
+<html>
+    
+        <meta http-equiv="Content-Type"
+        content="text/html; charset=utf-8">
+        <titlе>  Главная - Доска объявлений  </titlе>
+    
+    <body>
+        <h1> Объявления </h1>
+        <div>
+            <A hrеf = "/bbоаrd/">Главная</a>
+            {% for rubric in rubrics %}
+            <A href = "/bboard/{{ rubric.pk }}/">{{ rubric.name }}</a>
+            {% endfor %}
+        </div>
+{% for bb in bbs %}
+<div>
+<h2>{{ bb.title }}</h2>
+<P>{{ bb.content }}</p>
+<P><A href="/bboard/{{ bb.ruЬric.pk }}/">
+{{bb.ruЬric.name }}</a></p>
+<P> {{ bb.published|date:"d.m.Y H:i:s" }}</p>
+</div>
+{% endfor %}
+</body>
+</html>
