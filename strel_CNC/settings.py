@@ -1,4 +1,4 @@
-
+﻿
 import os
 
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
@@ -14,7 +14,9 @@ SECRET_KEY = 'fz*qbji)s(+rck)ilko3y6t%^vwvhuq*x2gdkggw^j6^p&v*jf'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = [
+'.yandex.by, .tut.by','127.0.0.1'
+]
 
 
 # Application definition
@@ -29,6 +31,9 @@ INSTALLED_APPS = [
     'main.apps.MainConfig',
     'bootstrap4',
     'debug_toolbar',
+    'django_cleanup',
+    'easy_thumbnails',
+    'captcha',
     #'django.contrib.staticfiles',
 ]
 
@@ -56,6 +61,7 @@ TEMPLATES = [
                 'django.template.context_processors.request',
                 'django.contrib.auth.context_processors.auth',
                 'django.contrib.messages.context_processors.messages',
+                'main.middlewares.str_context_processor',
             ],
         },
     },
@@ -67,21 +73,24 @@ WSGI_APPLICATION = 'strel_CNC.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/3.0/ref/settings/#databases
 
-#DATABASES = {
-#    'default': {
- #       'ENGINE': 'django.db.backends.mysql',
-  #      'HOST': 'localhost',
-   #     'USER': 'strel',
-    #    'PASSWORD': 'strelpassword',
-     #   'NАМЕ': 'streldb',
- #   }
-#}
 DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
+'default': {
+    'ENGINE': 'django.db.backends.postgresql_psycopg2',
+    'NAME': 'stdb',
+    'USER': 'postgres',
+    'PASSWORD': '14111951',
+    'HOST': '',
+    'PORT': '5432',
+    
     }
 }
+
+#DATABASES = {
+#    'default': {
+#        'ENGINE': 'django.db.backends.sqlite3',
+#        'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
+#    }
+#}
 
 # Password validation
 # https://docs.djangoproject.com/en/3.0/ref/settings/#auth-password-validators
@@ -104,7 +113,17 @@ AUTH_PASSWORD_VALIDATORS = [
 AUTH_USER_MODEL = 'main.AdvUser'
 # Internationalization
 # https://docs.djangoproject.com/en/3.0/topics/i18n/
-
+THUMBNALL_ALIASES = {
+    '': {
+        'default': {
+            'size': (96, 96),
+            'crop': 'scale',
+        },
+    },
+}
+THUМВNAIL_BASEDIR = 'thumbnails'
+МEDIA_ROOT = os.path.join(BASE_DIR, 'media')
+МEDIA_URL = '/media/'
 LANGUAGE_CODE = 'ru'
 
 TIME_ZONE = 'UTC'
